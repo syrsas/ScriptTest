@@ -19,11 +19,14 @@ public class Boss
     }
     public void Magic(int shohi)
     {
-        this.mp = mp - shohi;
-        Debug.Log("魔法攻撃をした。残りMPは" + mp);
+        if (mp >= shohi)
+        {
+            this.mp = mp - shohi;
+            Debug.Log("魔法攻撃をした。残りMPは" + mp);
+        }
         if (mp < shohi)
         {
-                Debug.Log("MPが足りないため、魔法が使えない。");
+            Debug.Log("残りMPは" + mp + "MPが足りないため、魔法が使えない。");
         }
     }
 }
@@ -52,8 +55,12 @@ public class Test : MonoBehaviour
             Debug.Log(array[j]);
         }
 
-        for (int k = 4; k < array.Length; k--)
+        for (int k = 4; k <= array.Length; k--)
         {
+            if (k<0)
+            {
+                break;
+            }
             Debug.Log(array[k]);
         }
     }
